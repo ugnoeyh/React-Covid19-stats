@@ -1,19 +1,36 @@
-import useStats from '../utils/useStats';
+import { useState } from "react";
+import useStats from "../utils/useStats";
+import Stats from "./Stats";
 
 export default function CountrySelector() {
-    const countries = useStats('https://covid19.mathdro.id/api/countries');
-//  console.log(countries);
-    if(!countries) return <p> loading... </p>
-    return (
+  const { stats: countries, loading, error } = useStats(
+    "https://covid19.mathdro.id/api/countries"
+  );
+  const [selectedCountry, setSelectedCountry] = useState("KOR");
+  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error...</p>;
+
+  return (
     <div>
-        <select>
-        {Object.entries(countries.countries).map((
-            [country, code]) => (
-                <option key={code} value={code}>
-                    {country}
-                </option>
-            ))}
-        </select>
+      <h2>선택된 도시: {selectedCountry}</h2>
+      <select
+        onChange={e => setSelectedCountry(countries.countries[e.target.value])}
+        defaultValue={selectedCountry}
+      >
+        {Object.entries(countries.countries).map(([country, code]) => (
+          <option
+            // selected={selectedCountry === countries.iso3[code]}
+            key={code}
+            value={country}
+          >
+            {country}
+          </option>
+        ))}
+      </select>
+      <Stats
+        url={`https://covid19.mathdro.id/api/countries/${selectedCountry}`}
+      />
     </div>
-    );
+  );
 }

@@ -5,9 +5,11 @@ import CountrySelector from '../components/CountrySelector';
 export default function IndexPage() {
     return(
         <div>
-        <Stats url="https://covid19.mathdro.id/api"></Stats>
-        <CountrySelector></CountrySelector>
-        <Stats url="https://covid19.mathdro.id/api/countries/KOR"></Stats>
+        <h1> COVID-19 virus 우한 폐렴(코로나 바이러스) 세계 현재 상황 </h1>
+        <Stats url="https://covid19.mathdro.id/api" />
+        <h1> COVID-19 virus 우한 폐렴(코로나 바이러스) 중국 현재 상황 </h1>
+        <Stats url="https://covid19.mathdro.id/api/countries/CN" />
+        <CountrySelector />
         </div>
     );
 }
