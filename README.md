@@ -2,7 +2,10 @@
 
 # 프로젝트 명
 World Wuhan Virus Stats (COVID-19) 
-세계 코로나(우한폐렴) 바이러스 통계 
+세계 코로나 바이러스 통계 
+
+# Demo
+https://react-covid19-stat.herokuapp.com/
 
 # 개발 언어, 환경
 React, Next, Hooks API, Nodejs
